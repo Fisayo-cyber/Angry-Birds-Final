@@ -19,7 +19,7 @@ var pig2,
   log2
 var bird
 var bgImage
-
+var platform
 function preload() {
   bgImage = loadImage("sprites/bg.png")
 }
@@ -49,6 +49,7 @@ function setup() {
   log3 = new Log(650, 160, 140, PI / 6)
   log4 = new Log(750, 160, 150, -PI / 6)
   bird = new Bird(40, 40)
+  platform = new Ground(200, 300, 400, 200)
   // degrees - measure of angle RADIANS 180 = PI radians (PI = 22/7 = 3.14...) 90
   // = PI/2 PI
 }
@@ -70,4 +71,5 @@ function draw() {
   log3.display()
   log4.display()
   bird.display()
+  platform.display()
 }
