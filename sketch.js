@@ -19,81 +19,88 @@ var log3,
 var pig2,
   log2
 var bird
-var bgImage
-var platform
-var slingshot;
-function preload() {
-  bgImage = loadImage("sprites/bg.png")
-}
+  var bgImage
+    var sling1,
+      sling2
+    var platform
+    var slingshot;
+    function preload() {
+      bgImage = loadImage("sprites/bg.png")
+      sling1 = loadImage("sprites/sling1.png")
+      sling2 = loadImage("sprites/sling2.png")
+    }
 
-function setup() {
+    function setup() {
 
-  createCanvas(1200, 400);
+      createCanvas(1200, 400);
 
-  engine = Engine.create();
-  world = engine.world
+      engine = Engine.create();
+      world = engine.world
 
-  //restitution, isStatic, density, friction - different properties
+      //restitution, isStatic, density, friction - different properties
 
-  Engine.run(engine)
+      Engine.run(engine)
 
-  ground = new Ground(600, 400, 1200, 20);
+      ground = new Ground(600, 400, 1200, 20);
 
-  box1 = new Box(600, 360, 60, 60);
-  box2 = new Box(800, 360, 60, 60);
-  box3 = new Box(600, 280, 60, 60);
-  box4 = new Box(800, 280, 60, 60);
-  box5 = new Box(700, 200, 60, 60)
-  pig1 = new Pig(700, 360)
-  pig2 = new Pig(700, 280)
-  log1 = new Log(700, 320, 280, PI / 2)
-  log2 = new Log(700, 240, 280, PI / 2)
-  log3 = new Log(650, 160, 140, PI / 6)
-  log4 = new Log(750, 160, 150, -PI / 6)
-  bird = new Bird(40, 40)
-  platform = new Ground(200, 300, 300, 150)
-  slingshot = new Slingshot(bird.body, {
-    x: 350,
-    y: 100
-  })
+      box1 = new Box(600, 360, 60, 60);
+      box2 = new Box(800, 360, 60, 60);
+      box3 = new Box(600, 280, 60, 60);
+      box4 = new Box(800, 280, 60, 60);
+      box5 = new Box(700, 200, 60, 60)
+      pig1 = new Pig(700, 360)
+      pig2 = new Pig(700, 280)
+      log1 = new Log(700, 320, 280, PI / 2)
+      log2 = new Log(700, 240, 280, PI / 2)
+      log3 = new Log(650, 160, 140, PI / 6)
+      log4 = new Log(750, 160, 150, -PI / 6)
+      bird = new Bird(255, 100)
+      platform = new Ground(150, 325, 300, 150)
+      slingshot = new Slingshot(bird.body, {
+        x: 255,
+        y: 100
+      })
 
-  // degrees - measure of angle RADIANS 180 = PI radians (PI = 22/7 = 3.14...) 90
-  // = PI/2 PI
-}
+      // degrees - measure of angle RADIANS 180 = PI radians (PI = 22/7 = 3.14...) 90
+      // = PI/2 PI
+    }
 
-function draw() {
+    function draw() {
 
-  background(bgImage);
-  rectMode(CENTER)
+      background(bgImage);
+      rectMode(CENTER)
 
-  box1.display()
-  box2.display()
-  box3.display()
-  box4.display()
-  box5.display()
-  ground.display()
-  pig1.display()
-  pig2.display()
-  log1.display()
-  log2.display()
-  log3.display()
-  log4.display()
-  bird.display()
-  platform.display()
+      box1.display()
+      box2.display()
+      box3.display()
+      box4.display()
+      box5.display()
+      ground.display()
+      pig1.display()
+      pig2.display()
+      log1.display()
+      log2.display()
+      log3.display()
+      log4.display()
+      image(sling1, 250, 70)
+      bird.display()
+      image(sling2, 220, 65)
+      platform.display()
+      slingshot.display()
 
-  slingshot.display()
+      text(mouseX + "," + mouseY, mouseX, mouseY)
 
-}
+    }
 
-function mouseDragged() {
-  Matter
-    .Body
-    .setPosition(bird.body, {
-      x: mouseX,
-      y: mouseY
-    })
-}
+    function mouseDragged() {
+      Matter
+        .Body
+        .setPosition(bird.body, {
+          x: mouseX,
+          y: mouseY
+        })
+    }
 
-function mouseReleased() {
-  slingshot.fly()
-}
+    function mouseReleased() {
+      slingshot.fly()
+    }

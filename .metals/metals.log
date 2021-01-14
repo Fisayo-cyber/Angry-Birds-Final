@@ -13,3 +13,10 @@ INFO: Unsupported notification method: $/setTraceNotification
 2021.01.12 17:10:56 WARN  no build tool detected in workspace '/Users/director/Desktop/WHJR folders/Angry Birds'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
 Jan 12, 2021 5:50:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
 INFO: Unsupported notification method: $/setTraceNotification
+2021.01.12 19:24:34 INFO  shutting down Metals
+2021.01.14 17:03:40 INFO  Started: Metals version 0.9.8 in workspace '/Users/director/Desktop/WHJR folders/Angry Birds' for client vscode.
+2021.01.14 17:04:03 INFO  time: initialize in 23s
+2021.01.14 17:04:11 WARN  Build server is not auto-connectable.
+2021.01.14 17:04:11 WARN  no build tool detected in workspace '/Users/director/Desktop/WHJR folders/Angry Birds'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Jan 14, 2021 5:54:41 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
