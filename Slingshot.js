@@ -42,4 +42,8 @@ class Slingshot {
         //when the fly function is called - bodyA becomes null
         this.slingshot.bodyA = null
     }
+
+    attach(body) {
+        this.slingshot.bodyA = body;
+    }
 }

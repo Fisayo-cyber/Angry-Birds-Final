@@ -84,9 +84,9 @@ var bird
       log4.display()
       image(sling1, 250, 70)
       bird.display()
+      slingshot.display()
       image(sling2, 220, 65)
       platform.display()
-      slingshot.display()
 
       text(mouseX + "," + mouseY, mouseX, mouseY)
 
@@ -103,4 +103,16 @@ var bird
 
     function mouseReleased() {
       slingshot.fly()
+    }
+
+    function keyPressed() {
+      if (keyCode === 32) {
+        Matter
+          .Body
+          .setPosition(bird.body, {
+            x: 255,
+            y: 100
+          })
+        slingshot.attach(bird.body)
+      }
     }

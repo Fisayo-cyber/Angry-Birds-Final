@@ -4,11 +4,12 @@ class Bird extends BaseClass {
         this.image = loadImage("sprites/bird.png")
         Matter
             .Body
-            .setDensity(this.body, 0.0009)
+            .setDensity(this.body, 0.002)
     }
 
     display() {
         //this.body.position.x = mouseX; this.body.position.y = mouseY;
         super.display();
+
     }
 }
