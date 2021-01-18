@@ -24,6 +24,50 @@ var bird
       sling2
     var platform
     var slingshot;
+
+    //Primary data types Number
+    var num = 12
+
+    //String
+    var str = "Hello World"
+    var str1 = "12"
+
+    //Boolean
+    var bool = true
+
+    //null
+    var obj = null
+
+    //undefined
+    var obj1;
+    console.log(obj1)
+
+    //Array - Data Structure
+    var arr = [1, 2, 3, 4, 5]
+
+    var arr1 = [12, "Fisayo", null]
+    console.log(arr1.length)
+
+    //index - position of the things inside an array - 0 .... length-1
+    console.log(arr1[1])
+
+    var arr2 = [
+      [
+        1, 2
+      ],
+      [
+        "hello", null
+      ],
+      ["world", 32]
+    ]
+    console.log(arr2[2][1])
+
+    arr2.push("Pushing")
+    console.log(arr2)
+
+    arr2.pop()
+    console.log(arr2)
+
     function preload() {
       bgImage = loadImage("sprites/bg.png")
       sling1 = loadImage("sprites/sling1.png")
