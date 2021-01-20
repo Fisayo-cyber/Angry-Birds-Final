@@ -4,9 +4,7 @@ class Bird extends BaseClass {
         this.image = loadImage("sprites/bird.png")
         this.smoke = loadImage("sprites/smoke.png")
         this.trail = []
-        Matter
-            .Body
-            .setDensity(this.body, 0.002)
+        Matter.Body.setDensity(this.body, 0.002)
     }
 
     // [[x1,y1],[x2,y2],[x3,y3],[x4,y4]....[xn,yn]] - [
@@ -19,12 +17,10 @@ class Bird extends BaseClass {
     display() {
         //this.body.position.x = mouseX; this.body.position.y = mouseY;
         super.display();
-        if (this.body.speed > 10) {
+        if (this.body.speed > 10 && this.body.position.x >260) {
             var pos = [this.body.position.x, this.body.position.y]
-
-            this
-                .trail
-                .push(pos)
+            
+            this.trail.push(pos)
 
             for (var i = 0; i < this.trail.length; i = i + 1) {
                 image(this.smoke, this.trail[i][0], this.trail[i][1])

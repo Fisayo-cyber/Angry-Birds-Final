@@ -6,7 +6,7 @@ const Constraint = Matter.Constraint;
 var ground
 var engine;
 var world;
-
+var bg;
 var box1;
 var box2;
 var box3,
@@ -25,9 +25,10 @@ var bird
     var platform
     var slingshot;
 
-    //Primary data types Number
-    var num = 12
-
+    //Primary data types 
+    //Number
+var num = 12
+    
     //String
     var str = "Hello World"
     var str1 = "12"
@@ -51,31 +52,34 @@ var bird
     //index - position of the things inside an array - 0 .... length-1
     console.log(arr1[1])
 
-    var arr2 = [
-      [
-        1, 2
-      ],
-      [
-        "hello", null
-      ],
-      ["world", 32]
-    ]
+    var arr2 = [[1,2],["hello", null],["world", 32]]
     console.log(arr2[2][1])
-
+    //push adds something at the end of an array
     arr2.push("Pushing")
-    console.log(arr2)
-
+    console.log(arr2) // arr2 = [[1,2],["hello", null],["world", 32],"Pushing"]
+    //pop removes the last thing in an array
     arr2.pop()
     console.log(arr2)
+
+    //Object - JavaScript Object Notation - JSON... Class Person - 
+    var gameState = "onSling" 
+    
+    var person = {
+      name: "Fisayo",
+      age: 12,
+      height: 150
+    }
+
+    console.log(person.name)
 
     function preload() {
       bgImage = loadImage("sprites/bg.png")
       sling1 = loadImage("sprites/sling1.png")
       sling2 = loadImage("sprites/sling2.png")
+      getBgImage()
     }
 
     function setup() {
-
       createCanvas(1200, 400);
 
       engine = Engine.create();
@@ -111,7 +115,12 @@ var bird
 
     function draw() {
 
-      background(bgImage);
+      if(bg){
+        background(bg);
+      }
+      else{
+        background("lightblue")
+      }
       rectMode(CENTER)
 
       box1.display()
@@ -135,19 +144,17 @@ var bird
       text(mouseX + "," + mouseY, mouseX, mouseY)
 
     }
+    
+function mouseDragged() {
+  if (gameState === "onSling") {
+    Matter.Body.setPosition(bird.body, { x: mouseX, y: mouseY })
+  }
+}
 
-    function mouseDragged() {
-      Matter
-        .Body
-        .setPosition(bird.body, {
-          x: mouseX,
-          y: mouseY
-        })
-    }
-
-    function mouseReleased() {
-      slingshot.fly()
-    }
+function mouseReleased() {
+    slingshot.fly()
+    gameState = "launched"
+}
 
     function keyPressed() {
       if (keyCode === 32) {
@@ -158,5 +165,26 @@ var bird
             y: 100
           })
         slingshot.attach(bird.body)
+        gameState = "onSling"
       }
     }
+
+    //synchronous execution 
+async function getBgImage(){
+   var response =  await fetch("https://worldtimeapi.org/api/ip")
+   var responseJSON = await response.json()
+   console.log(responseJSON)
+
+   var datetime = responseJSON.datetime
+    console.log(datetime)
+    var hour = datetime.slice(11, 13)
+  console.log(hour)
+  
+  if(hour>=6 && hour<=18) {
+    bg = loadImage("sprites/bg.png")
+  }
+
+  else {
+    bg = loadImage("sprites/bg2.jpg")
+  }
+}
