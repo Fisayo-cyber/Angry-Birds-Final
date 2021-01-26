@@ -142,6 +142,7 @@ var arr1 = [12, "Fisayo", null]
       platform.display()
 
       text(mouseX + "," + mouseY, mouseX, mouseY)
+      fill("red")
       text("Score:" + score, 900, 85)
 
     }
