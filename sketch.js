@@ -9,44 +9,42 @@ var world;
 var bg;
 var box1;
 var box2;
-var box3,
-  box4
+var box3,box4
 var box5;
 var pig1;
 var log1;
-var log3,
-  log4;
-var pig2,
-  log2
-var bird
-  var bgImage
-    var sling1,
-      sling2
-    var platform
-    var slingshot;
-
+var log3,log4;
+var pig2,log2;
+var bird;
+var bgImage
+var sling1,sling2
+var platform
+var slingshot;   
+var score = 0
     //Primary data types 
     //Number
-var num = 12
+ var num = 12
     
     //String
-    var str = "Hello World"
-    var str1 = "12"
+var str = "Hello World"
+var str1 = "12"
 
-    //Boolean
-    var bool = true
+//Boolean
+var bool = true
 
-    //null
-    var obj = null
+//null
+var obj = null
 
-    //undefined
+//undefined
     var obj1;
     console.log(obj1)
 
     //Array - Data Structure
     var arr = [1, 2, 3, 4, 5]
 
-    var arr1 = [12, "Fisayo", null]
+var arr1 = [12, "Fisayo", null]
+    
+
     console.log(arr1.length)
 
     //index - position of the things inside an array - 0 .... length-1
@@ -131,6 +129,8 @@ var num = 12
       ground.display()
       pig1.display()
       pig2.display()
+      pig1.score()
+      pig2.score()
       log1.display()
       log2.display()
       log3.display()
@@ -142,6 +142,7 @@ var num = 12
       platform.display()
 
       text(mouseX + "," + mouseY, mouseX, mouseY)
+      text("Score:" + score, 900, 85)
 
     }
     
@@ -155,15 +156,15 @@ function mouseReleased() {
     slingshot.fly()
     gameState = "launched"
 }
-
+//angular velocity - speed at which something is rotating
     function keyPressed() {
       if (keyCode === 32) {
-        Matter
-          .Body
-          .setPosition(bird.body, {
-            x: 255,
-            y: 100
-          })
+        Matter.Body.setPosition(bird.body, { x: 255, y: 100 })
+        Matter.Body.setAngularVelocity(bird.body, 0)
+        Matter.Body.setAngle(bird.body, 0)
+        Matter.Body.setVelocity(bird.body, {x: 0, y:0})
+
+        bird.trail = []
         slingshot.attach(bird.body)
         gameState = "onSling"
       }

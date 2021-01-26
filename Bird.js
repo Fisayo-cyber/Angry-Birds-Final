@@ -17,11 +17,11 @@ class Bird extends BaseClass {
     display() {
         //this.body.position.x = mouseX; this.body.position.y = mouseY;
         super.display();
-        if (this.body.speed > 10 && this.body.position.x >260) {
+        if (this.body.speed > 10 && this.body.position.x >260 && gameState === "launched") {
             var pos = [this.body.position.x, this.body.position.y]
             
             this.trail.push(pos)
-
+        
             for (var i = 0; i < this.trail.length; i = i + 1) {
                 image(this.smoke, this.trail[i][0], this.trail[i][1])
             }
